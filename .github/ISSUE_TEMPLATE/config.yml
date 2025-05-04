@@ -4,7 +4,7 @@ contact_links: []
 issue_templates:
   - name: Task
     description: 開発タスクを登録するフォーム
-    file: task.yml
+    file: 1-task.yml
   - name: Bug Report
     description: バグを報告するフォーム
-    file: bug-report.yml
+    file: 2-bug-report.yml
