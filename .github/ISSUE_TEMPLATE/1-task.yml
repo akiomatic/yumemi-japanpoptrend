@@ -1,0 +1,48 @@
+name: "📌 タスク登録"
+description: 開発タスクを明確化するためのフォーム
+title: "[Task] <タイトルを入力>"
+labels: ["enhancement"]
+assignees: ["akiomatic"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## タスク概要
+        必要項目を入力してタスクを作成してください。
+
+  - type: input
+    id: summary
+    attributes:
+      label: 概要
+      placeholder: 例）人口構成グラフ切替 UI の実装
+    validations:
+      required: true
+
+  - type: textarea
+    id: todo
+    attributes:
+      label: Todo リスト
+      description: Markdown チェックボックス形式で記述
+      placeholder: |
+        - [ ] API 設計
+        - [ ] コンポーネント作成
+        - [ ] テスト追加
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足・メモ
+      placeholder: 参考リンクや注意点など
+    validations:
+      required: false
+
+  - type: input
+    id: related
+    attributes:
+      label: 関連 Issue / PR
+      placeholder: 例）#12
+    validations:
+      required: false
