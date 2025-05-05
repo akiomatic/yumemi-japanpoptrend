@@ -12,7 +12,8 @@
 		"build-storybook": "storybook build",
 		"test-storybook": "test-storybook",
 		"test-storybook:watch": "test-storybook --watch",
-		"test": "vitest"
+		"test": "vitest",
+		"test:coverage": "vitest --coverage"
 	},
 	"dependencies": {
 		"@headlessui/react": "^2.2.2",
