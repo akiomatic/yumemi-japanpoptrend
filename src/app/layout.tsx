@@ -4,7 +4,7 @@ import "./globals.css";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const kosugiMaru = Kosugi_Maru({
-	variable: "--font-kosugi-maru",
+	variable: "--font-gf-kosugi-maru",
 	subsets: ["latin"],
 	weight: "400",
 	display: "swap",
@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${kosugiMaru.className} antialiased`}>
+			<body className={`${kosugiMaru.variable} antialiased`}>
 				<NuqsAdapter>{children}</NuqsAdapter>
 			</body>
 		</html>
