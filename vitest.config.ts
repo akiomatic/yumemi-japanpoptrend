@@ -20,7 +20,7 @@ export default defineConfig({
 			{
 				plugins: [tsconfigPaths(), react()],
 				test: {
-					name: "unit",
+					name: "unit-test",
 					environment: "jsdom",
 				},
 			},
