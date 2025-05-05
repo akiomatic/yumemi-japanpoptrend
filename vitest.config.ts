@@ -5,6 +5,9 @@ import { defineConfig } from "vitest/config";
 
 import { storybookTest } from "@storybook/experimental-addon-test/vitest-plugin";
 
+import react from "@vitejs/plugin-react";
+import tsconfigPaths from "vite-tsconfig-paths";
+
 const dirname =
 	typeof __dirname !== "undefined"
 		? __dirname
@@ -14,6 +17,13 @@ const dirname =
 export default defineConfig({
 	test: {
 		workspace: [
+			{
+				plugins: [tsconfigPaths(), react()],
+				test: {
+					name: "unit-test",
+					environment: "jsdom",
+				},
+			},
 			{
 				extends: true,
 				plugins: [
