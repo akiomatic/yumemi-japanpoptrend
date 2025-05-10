@@ -6,11 +6,17 @@ import {
 	populationCompositionPerYearResponseSchema,
 	prefecturesResponseSchema,
 } from "@/types";
+import { unstable_cacheLife as cacheLife } from "next/cache";
 
 const BASE_URL = `${env.YUMEMI_CODECHECK_API_BASE_URL}/api/v1`;
 
 export const getPrefectures = async () => {
 	"use cache";
+	/**
+	 * キャッシュの有効期間を1時間に設定
+	 * @see https://nextjs.org/docs/app/api-reference/functions/cacheLife#default-cache-profiles
+	 */
+	cacheLife("hours");
 
 	const res = await fetch(`${BASE_URL}/prefectures`, {
 		headers: {
@@ -32,6 +38,11 @@ export const getPopulationCompositionPerYearByPrefCode = async (
 	prefCode: TPrefCode,
 ) => {
 	"use cache";
+	/**
+	 * キャッシュの有効期間を1時間に設定
+	 * @see https://nextjs.org/docs/app/api-reference/functions/cacheLife#default-cache-profiles
+	 */
+	cacheLife("hours");
 
 	const res = await fetch(
 		`${BASE_URL}/population/composition/perYear?prefCode=${prefCode}`,
