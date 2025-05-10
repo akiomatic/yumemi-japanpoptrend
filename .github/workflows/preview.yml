@@ -3,17 +3,17 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
-  workflow_run:
-    workflows:
-      - Tests
+  push:
     branches-ignore:
       - main
-    types: 
-      - completed
 
 jobs:
-  setup:
+  deploy-preview:
+    if: ${{ github.ref == 'refs/heads/dev' }}
     runs-on: ubuntu-latest
+    environment:
+      name: Staging Preview Deployment
+      url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -21,38 +21,35 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-  deploy-preview:
-    if: ${{ github.ref == 'refs/heads/dev' }}
-    needs: setup
-    runs-on: ubuntu-latest
-    environment:
-      name: Staging Preview Deployment
-      url: ${{ steps.deploy.outputs.url }}
-    steps:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        
+
       - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --target=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
-        run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+        run: echo "url=$(vercel deploy --target=preview --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
 
   deploy-feature-preview:
     if: ${{ github.ref != 'refs/heads/dev' }}
-    needs: setup
     runs-on: ubuntu-latest
     environment:
       name: Feature Preview Deployment
       url: ${{ steps.deploy.outputs.url }}
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        
+
       - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --target=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         id: deploy
-        run: echo "url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+        run: echo "url=$(vercel deploy --target=preview --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
