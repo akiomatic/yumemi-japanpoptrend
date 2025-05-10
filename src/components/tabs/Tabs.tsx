@@ -31,6 +31,7 @@ export const Tabs = <T extends string>({
 						value={field.value}
 						className="peer sr-only"
 						aria-label={`${field.label}を選択`}
+						aria-selected={selected === field.value}
 					/>
 					<Label
 						className={cn(
@@ -39,6 +40,7 @@ export const Tabs = <T extends string>({
 								? "bg-black text-white border-black hover:bg-gray-800"
 								: "bg-white text-gray-800 border-gray-200 hover:bg-gray-50",
 						)}
+						aria-selected={selected === field.value}
 					>
 						<span className="text-sm">{field.label}</span>
 					</Label>
