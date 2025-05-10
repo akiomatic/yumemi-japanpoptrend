@@ -3,13 +3,9 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
-  workflow_run:
-    workflows:
-      - Tests
+  push:
     branches:
       - main
-    types: 
-      - completed
 
 jobs:
   deploy-production:
