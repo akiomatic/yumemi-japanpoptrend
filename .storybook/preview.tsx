@@ -1,3 +1,4 @@
+import "../src/app/globals.css";
 import type { Preview } from "@storybook/react";
 import { Kosugi_Maru } from "next/font/google";
 // biome-ignore lint/correctness/noUnusedImports: フォントを読み込むために必要
