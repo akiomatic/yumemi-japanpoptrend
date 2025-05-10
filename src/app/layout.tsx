@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${kosugiMaru.variable} antialiased`}>
+			<body
+				className={`${kosugiMaru.variable} font-kosugi-maru antialiased min-h-screen`}
+			>
 				<NuqsAdapter>{children}</NuqsAdapter>
 			</body>
 		</html>
