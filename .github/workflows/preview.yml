@@ -12,8 +12,12 @@ on:
       - completed
 
 jobs:
-  setup:
+  deploy-preview:
+    if: ${{ github.ref == 'refs/heads/dev' }}
     runs-on: ubuntu-latest
+    environment:
+      name: Staging Preview Deployment
+      url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -21,17 +25,9 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-  deploy-preview:
-    if: ${{ github.ref == 'refs/heads/dev' }}
-    needs: setup
-    runs-on: ubuntu-latest
-    environment:
-      name: Staging Preview Deployment
-      url: ${{ steps.deploy.outputs.url }}
-    steps:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        
+
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
@@ -41,15 +37,20 @@ jobs:
 
   deploy-feature-preview:
     if: ${{ github.ref != 'refs/heads/dev' }}
-    needs: setup
     runs-on: ubuntu-latest
     environment:
       name: Feature Preview Deployment
       url: ${{ steps.deploy.outputs.url }}
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        
+
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
