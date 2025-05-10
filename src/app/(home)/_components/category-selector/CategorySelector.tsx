@@ -1,14 +1,17 @@
 "use client";
 
 import { Tabs } from "@/components/tabs";
-import { populationSearchParams } from "@/lib/search-params";
+import {
+	populationSearchParamKeys,
+	populationSearchParams,
+} from "@/lib/search-params";
 import { categoryKeys } from "@/types";
 import { categoriesLabels } from "@/types/categories";
 import { useQueryState } from "nuqs";
 
 export const CategorySelector = () => {
 	const [selectedCategory, setSelectedCategory] = useQueryState(
-		"category",
+		populationSearchParamKeys.category,
 		populationSearchParams.category,
 	);
 
