@@ -31,7 +31,7 @@ export const Tabs = <T extends string>({
 						value={field.value}
 						className="peer sr-only"
 						aria-label={`${field.label}を選択`}
-						aria-selected={selected === field.value}
+						aria-checked={selected === field.value}
 					/>
 					<Label
 						className={cn(
