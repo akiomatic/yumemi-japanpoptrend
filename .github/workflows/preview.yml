@@ -16,17 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
-
-      - name: Install packages
-        run: npm ci --force
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
 
   deploy-preview:
     if: ${{ github.ref == 'refs/heads/dev' }}
@@ -36,12 +29,6 @@ jobs:
       name: Staging Preview Deployment
       url: ${{ steps.deploy.outputs.url }}
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
-
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
         
@@ -60,12 +47,6 @@ jobs:
       name: Feature Preview Deployment
       url: ${{ steps.deploy.outputs.url }}
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
-
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
         
