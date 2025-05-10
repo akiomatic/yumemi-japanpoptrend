@@ -27,7 +27,7 @@ export const Default: Story = {
 		await expect(sourceCodeLink).toBeInTheDocument();
 		await expect(sourceCodeLink).toHaveAttribute(
 			"href",
-			"https://github.com/akiomatic/pref-population-trend",
+			"https://github.com/akiomatic/yumemi-japanpoptrend",
 		);
 
 		await userEvent.hover(sourceCodeLink);
