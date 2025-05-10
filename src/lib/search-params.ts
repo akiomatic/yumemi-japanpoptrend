@@ -16,11 +16,18 @@ const parseAsPrefCode = createParser({
 	},
 });
 
+export const populationSearchParamKeys = {
+	prefCodes: "prefCodes",
+	category: "category",
+} as const;
+
 export const populationSearchParams = {
-	prefCodes: parseAsArrayOf(parseAsPrefCode).withDefault([]).withOptions({
-		shallow: false,
-	}),
-	category: parseAsStringLiteral(categoryKeys)
+	[populationSearchParamKeys.prefCodes]: parseAsArrayOf(parseAsPrefCode)
+		.withDefault([])
+		.withOptions({
+			shallow: false,
+		}),
+	[populationSearchParamKeys.category]: parseAsStringLiteral(categoryKeys)
 		.withDefault("total")
 		.withOptions({
 			shallow: false,
