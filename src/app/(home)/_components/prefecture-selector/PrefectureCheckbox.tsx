@@ -1,7 +1,10 @@
 "use client";
 
 import { Checkbox } from "@/components/checkbox/Checkbox";
-import { populationSearchParams } from "@/lib/search-params";
+import {
+	populationSearchParamKeys,
+	populationSearchParams,
+} from "@/lib/search-params";
 import type { TPrefCode, TPrefecture } from "@/types";
 import { useQueryState } from "nuqs";
 
@@ -13,7 +16,7 @@ export const PrefectureCheckbox = ({
 	prefecture,
 }: TPrefectureCheckboxProps) => {
 	const [selectedPrefectures, setSelectedPrefectures] = useQueryState(
-		"prefCodes",
+		populationSearchParamKeys.prefCodes,
 		populationSearchParams.prefCodes,
 	);
 
