@@ -12,7 +12,10 @@ export const Header = () => {
 					href={SOURCE_CODE_URL}
 					className="group flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
 				>
-					<CodeIcon className="h-4 group-hover:text-blue-500 transition-colors duration-200" />
+					<CodeIcon
+						data-testid="code-icon"
+						className="h-4 group-hover:text-blue-500 transition-colors duration-200"
+					/>
 					<span className="hidden sm:block group-hover:text-blue-500 transition-colors duration-200">
 						ソースコード
 					</span>

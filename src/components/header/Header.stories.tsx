@@ -41,7 +41,7 @@ export const Default: Story = {
 			"hover:text-gray-900",
 		);
 
-		const codeIcon = canvas.getByRole("img", { hidden: true });
+		const codeIcon = canvas.getByTestId("code-icon");
 		await expect(codeIcon).toBeInTheDocument();
 		await expect(codeIcon).toHaveClass(
 			"h-4",
