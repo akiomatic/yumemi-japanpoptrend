@@ -63,10 +63,15 @@ export const PopulationTrendChartClient = ({
 			>
 				<CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" />
 				<XAxis dataKey="year" stroke="#333" style={{ fontSize: FONT_SIZE }} />
-				<YAxis stroke="#333" style={{ fontSize: FONT_SIZE }} />
+				<YAxis
+					stroke="#333"
+					style={{ fontSize: FONT_SIZE }}
+					tickFormatter={(value) => value.toLocaleString()}
+				/>
 				<Tooltip
 					contentStyle={{ fontSize: FONT_SIZE, borderRadius: 8 }}
 					labelStyle={{ fontSize: FONT_SIZE }}
+					formatter={(value) => value.toLocaleString()}
 				/>
 				<Legend wrapperStyle={{ fontSize: FONT_SIZE, paddingTop: 8 }} />
 				{prefData.map((pref, idx) => (
