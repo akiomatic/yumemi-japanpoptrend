@@ -18,7 +18,9 @@ export default function Home() {
 				<section>
 					<div className="flex justify-between items-center pb-2">
 						<h3 className="font-semibold">人口トレンド</h3>
-						<CategorySelector />
+						<Suspense fallback={<div>Loading...</div>}>
+							<CategorySelector />
+						</Suspense>
 					</div>
 				</section>
 			</main>
