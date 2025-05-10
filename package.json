@@ -8,6 +8,7 @@
 		"start": "next start",
 		"lint": "npx @biomejs/biome lint .",
 		"format": "npx @biomejs/biome format --write .",
+		"ci:check": "npx @biomejs/biome check",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
 		"test-storybook": "test-storybook",
