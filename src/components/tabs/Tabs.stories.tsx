@@ -109,13 +109,13 @@ export const AccessibilityTest: Story = {
 		const tab2 = canvas.getByLabelText("タブ2を選択");
 		const tab3 = canvas.getByLabelText("タブ3を選択");
 
-		expect(tab1).toHaveAttribute("aria-selected", "true");
+		expect(tab1).toHaveAttribute("aria-checked", "true");
 
 		await userEvent.click(tab2);
-		expect(tab2).toHaveAttribute("aria-selected", "true");
-		expect(tab1).toHaveAttribute("aria-selected", "false");
+		expect(tab2).toHaveAttribute("aria-checked", "true");
+		expect(tab1).toHaveAttribute("aria-checked", "false");
 
 		await userEvent.keyboard("{ArrowRight}");
-		expect(tab3).toHaveAttribute("aria-selected", "true");
+		expect(tab3).toHaveAttribute("aria-checked", "true");
 	},
 };
