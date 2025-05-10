@@ -26,7 +26,9 @@ export const getPrefectures = async () => {
 	});
 
 	if (!res.ok) {
-		throw new Error("Failed to fetch prefectures");
+		throw new Error(
+			`Failed to fetch prefectures. ${res.status} ${res.statusText}`,
+		);
 	}
 
 	const prefectures = await res.json();
@@ -56,7 +58,7 @@ export const getPopulationCompositionPerYearByPrefCode = async (
 
 	if (!res.ok) {
 		throw new Error(
-			`Failed to fetch population composition per year by prefCode: ${prefCode}`,
+			`Failed to fetch population composition per year by prefCode: ${prefCode}. ${res.status} ${res.statusText}`,
 		);
 	}
 
