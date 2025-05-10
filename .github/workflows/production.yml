@@ -12,8 +12,11 @@ on:
       - completed
 
 jobs:
-  setup:
+  deploy-production:
     runs-on: ubuntu-latest
+    environment:
+      name: Production Deployment
+      url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -21,13 +24,6 @@ jobs:
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
-  deploy-production:
-    needs: setup
-    runs-on: ubuntu-latest
-    environment:
-      name: Production Deployment
-      url: ${{ steps.deploy.outputs.url }}
-    steps:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         
