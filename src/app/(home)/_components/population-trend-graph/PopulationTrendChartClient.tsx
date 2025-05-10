@@ -68,7 +68,7 @@ export const PopulationTrendChartClient = ({
 					style={{ fontSize: FONT_SIZE }}
 					label={{ value: "年", position: "insideBottom", offset: -5 }}
 				/>
-				å
+				
 				<YAxis
 					stroke="#333"
 					style={{ fontSize: FONT_SIZE }}
