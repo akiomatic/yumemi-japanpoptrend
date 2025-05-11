@@ -56,6 +56,7 @@ npm run dev  # http://localhost:3000 にアクセス
 | `npm start`        | 本番サーバー (ローカル) |
 | `npm run lint`     | Biome 静的解析 |
 | `npm run format`   | Biome フォーマッター |
+| `npm run test-storybook`     | Storybook テスト実行 |
 
 ---
 
