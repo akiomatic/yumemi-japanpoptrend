@@ -37,8 +37,8 @@
 ## 開発環境のセットアップ
 
 ```bash
-git clone https://github.com/akiomatic/yumemi-frontend-engineer-codecheck.git
-cd yumemi-frontend-engineer-codecheck
+git clone https://github.com/akiomatic/yumemi-japanpoptrend.git
+cd yumemi-japanpoptrend
 
 npm i  # 依存関係のインストール
 cp .env.local.example .env.local  # コピー後、環境変数を設定
@@ -56,6 +56,7 @@ npm run dev  # http://localhost:3000 にアクセス
 | `npm start`        | 本番サーバー (ローカル) |
 | `npm run lint`     | Biome 静的解析 |
 | `npm run format`   | Biome フォーマッター |
+| `npm run test-storybook`     | Storybook テスト実行 |
 
 ---
 
