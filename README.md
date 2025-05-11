@@ -1,6 +1,7 @@
 # Yumemi Frontend Engineer Code Check
 
 株式会社ゆめみのフロントエンドコーディング試験のプロジェクトです。
+
 都道府県別の人口推移グラフを表示するアプリケーションです。
 
 > [!NOTE]
