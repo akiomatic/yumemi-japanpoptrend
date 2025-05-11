@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme inline {
+	--font-kosugi-maru: var(--font-gf-kosugi-maru);
+}
