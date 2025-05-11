@@ -22,7 +22,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="ja">
 			<body
 				className={`${kosugiMaru.variable} font-kosugi-maru antialiased min-h-screen`}
 			>
