@@ -1,10 +1,16 @@
 import { CategorySelector } from "@/app/(home)/_components/category-selector";
+import { PopulationTrendChartWrapper } from "@/app/(home)/_components/population-trend-graph";
 import { PrefectureSelector } from "@/app/(home)/_components/prefecture-selector";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import type { SearchParams } from "nuqs";
 import { Suspense } from "react";
 
-export default function Home() {
+type THomePageProps = {
+	searchParams: Promise<SearchParams>;
+};
+
+export default function Home({ searchParams }: THomePageProps) {
 	return (
 		<div className="min-h-screen flex flex-col">
 			<Header />
@@ -22,6 +28,9 @@ export default function Home() {
 							<CategorySelector />
 						</Suspense>
 					</div>
+					<Suspense fallback={<div>Loading...</div>}>
+						<PopulationTrendChartWrapper searchParams={searchParams} />
+					</Suspense>
 				</section>
 			</main>
 			<Footer />
